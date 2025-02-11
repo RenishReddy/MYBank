@@ -70,7 +70,6 @@ function home() {
   let str = `
       <h3>Welcome ${user.name}</h3>
       <button onclick='showLogin()'>Logout</button>
-      <button onclick='showAllUsers()'>View Users</button>
       <p><select id="type" onchange='showUser()'>
          <option value=0>--Select--</option>
          <option value=1>Deposit</option>
@@ -137,6 +136,7 @@ function showLogin() {
       <p><input id="password" type="password"></p>
       <button onclick='chkUser()'>Log In</button>
       <p><button onclick='showForm()'>Create Account</button></p>
+      <button onclick='showAllUsers()'>View Users</button>
   </div>
   `;
   root.innerHTML = str;

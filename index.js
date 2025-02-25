@@ -1,28 +1,19 @@
 let users = [];
-let user = {}
-// let useremail = "";
-// let username = "";
-// let currBalance = 0;
+let user = {};
 document.write("<div id=root></div>");
-function showAllUsers(){
-  let str=`<h2>All Users Data</h2>`
-  if(users.length == 0){
-    str += `<p>No user Found</p>`
-  }else{
-    for(let i=0;i<users.length;i++){
-      str += `
-      <p><b>Name:</b> ${users[i].name}</p>
-      <p><b>Eami-id:</b> ${users[i].email}</p>
-      <p><b>Balance:</b> ${users[i].balance}</p>`
-    }
+function toggle(color) {
+  if (color == "dark") {
+    document.body.style.background = "black";
+    document.body.style.color = "white";
+  } else {
+    document.body.style.background = "white";
+    document.body.style.color = "black";
   }
-  str +=`<button onclick='home()'>Home</button>`
-  root.innerHTML = str
 }
 function showUser() {
   if (document.getElementById("type").value == "3") {
-    console.log("Transfer")
-    selUser.style.display = 'block'
+    console.log("Transfer");
+    selUser.style.display = "block";
     let str = "<option value=0>--Select--</option>";
     for (let i = 0; i < users.length; i++) {
       if (users[i].email != user.email) {
@@ -30,9 +21,8 @@ function showUser() {
       }
     }
     selUser.innerHTML = str;
-  }
-  else {
-    selUser.style.display = "none"
+  } else {
+    selUser.style.display = "none";
   }
 }
 function saveData() {
@@ -41,7 +31,7 @@ function saveData() {
   for (let i = 0; i < users.length; i++) {
     if (users[i].email == user.email) {
       if (type == "1") {
-        console.log("testing")
+        console.log("testing");
         users[i].balance += amount;
         spBalance.innerHTML = users[i].balance;
       } else if (type == "2") {
@@ -107,7 +97,7 @@ function chkUser() {
       // useremail = email;
       // username = users[i].name;
       // currBalance = users[i].balance;
-      user = users[i]
+      user = users[i];
       home();
       break;
     } else {
@@ -136,7 +126,6 @@ function showLogin() {
       <p><input id="password" type="password"></p>
       <button onclick='chkUser()'>Log In</button>
       <p><button onclick='showForm()'>Create Account</button></p>
-      <button onclick='showAllUsers()'>View Users</button>
   </div>
   `;
   root.innerHTML = str;

@@ -1,5 +1,5 @@
 let users = [];
-let user = {};
+let user = {}
 document.write("<div id=root></div>");
 function toggle(color) {
   if (color == "dark") {
@@ -10,10 +10,25 @@ function toggle(color) {
     document.body.style.color = "black";
   }
 }
+function showAllUsers(){
+  let str=`<h2>All Users Data</h2>`
+  if(users.length == 0){
+    str += `<p>No user Found</p>`
+  }else{
+    for(let i=0;i<users.length;i++){
+      str += `
+      <p><b>Name:</b> ${users[i].name}</p>
+      <p><b>Eami-id:</b> ${users[i].email}</p>
+      <p><b>Balance:</b> ${users[i].balance}</p>`
+    }
+  }
+  str +=`<button onclick='home()'>Home</button>`
+  root.innerHTML = str
+}
 function showUser() {
   if (document.getElementById("type").value == "3") {
-    console.log("Transfer");
-    selUser.style.display = "block";
+    console.log("Transfer")
+    selUser.style.display = 'block'
     let str = "<option value=0>--Select--</option>";
     for (let i = 0; i < users.length; i++) {
       if (users[i].email != user.email) {
@@ -21,8 +36,9 @@ function showUser() {
       }
     }
     selUser.innerHTML = str;
-  } else {
-    selUser.style.display = "none";
+  }
+  else {
+    selUser.style.display = "none"
   }
 }
 function saveData() {
@@ -31,7 +47,7 @@ function saveData() {
   for (let i = 0; i < users.length; i++) {
     if (users[i].email == user.email) {
       if (type == "1") {
-        console.log("testing");
+        console.log("testing")
         users[i].balance += amount;
         spBalance.innerHTML = users[i].balance;
       } else if (type == "2") {
@@ -97,7 +113,7 @@ function chkUser() {
       // useremail = email;
       // username = users[i].name;
       // currBalance = users[i].balance;
-      user = users[i];
+      user = users[i]
       home();
       break;
     } else {
@@ -108,10 +124,10 @@ function chkUser() {
 function showForm() {
   let str = `
   <h2>Registration Form</h2>
-  <p><input type="text" id="name" placeholder="Name"></p>
-  <p><input type="text" id="email" placeholder="Email"></p>
-  <p><input type="password" id="password" placeholder="Password"></p>
-  <p><input type="date" id="dob"></p>
+  <p><input type="text" class='form-control' id="name" placeholder="Name"></p>
+  <p><input type="text" class='form-control' id="email" placeholder="Email"></p>
+  <p><input type="password" class='form-control' id="password" placeholder="Password"></p>
+  <p><input type="date" class='form-contorl' id="dob"></p>
   <p><button onclick='addUser()'>Submit</button></p>
   <p>Already a member?<button onclick='showLogin()'>Login Here</button></p>
   `;
@@ -119,13 +135,14 @@ function showForm() {
 }
 function showLogin() {
   let str = `
-  <div>
+  <div class=" w-100 bg-info text-center m-5 p-5 rounded-5 text-center">
       <h2>Login Form</h2>
       <div id='msg'></div>
-      <p><input id="email" type="text"></p>
-      <p><input id="password" type="password"></p>
-      <button onclick='chkUser()'>Log In</button>
-      <p><button onclick='showForm()'>Create Account</button></p>
+      <p><input id="email" class='form-control' type="text"></p>
+      <p><input id="password" class='form-control' type="password"></p>
+      <button onclick='chkUser()' class="btn btn-primary w-100">Log In</button>
+      <p><button onclick='showForm()' class="btn btn-primary mt-3">Create Account</button></p>
+      <button onclick='showAllUsers()'>View Users</button>
   </div>
   `;
   root.innerHTML = str;
